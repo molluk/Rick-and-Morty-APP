@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="transparent">#00FFFFFF</color>
+    <color name="color_gray_default">#7F7F7F</color>
+    <color name="color_background_default">#FFF0F0F0</color>
+    <color name="color_background_tile">#FFF4F5F7</color>
+    <color name="text">#FF000000</color>
+    <color name="icon_select">#FF00CCCB</color>
+    <color name="icon">#FF292D32</color>
+</resources>

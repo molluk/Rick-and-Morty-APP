@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="DisplayLarge">
+        <item name="android:textSize">64sp</item>
+        <item name="lineHeight">88sp</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textColor">@color/text</item>
+    </style>
+
+    <style name="DisplayMedium">
+        <item name="android:textSize">40sp</item>
+        <item name="lineHeight">56sp</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textColor">@color/text</item>
+    </style>
+
+    <style name="DisplaySmall">
+        <item name="android:textSize">36sp</item>
+        <item name="lineHeight">48sp</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textColor">@color/text</item>
+    </style>
+
+    <!--
+        Headline
+    -->
+    <style name="HeadlineLarge">
+        <item name="android:textSize">32sp</item>
+        <item name="lineHeight">40sp</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textColor">@color/text</item>
+    </style>
+
+    <style name="HeadlineMedium">
+        <item name="android:textSize">28sp</item>
+        <item name="lineHeight">36sp</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textColor">@color/text</item>
+    </style>
+
+    <style name="HeadlineSmall">
+        <item name="android:textSize">24sp</item>
+        <item name="lineHeight">32sp</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textColor">@color/text</item>
+    </style>
+
+    <!--
+        Title
+    -->
+    <style name="TitleLarge">
+        <item name="android:textSize">22sp</item>
+        <item name="lineHeight">28sp</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textColor">@color/text</item>
+    </style>
+
+    <style name="TitleMedium">
+        <item name="android:textSize">16sp</item>
+        <item name="lineHeight">24sp</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textColor">@color/text</item>
+    </style>
+
+    <!--
+        Label
+    -->
+    <style name="LabelLarge">
+        <item name="android:textSize">14sp</item>
+        <item name="lineHeight">20sp</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textColor">@color/text</item>
+    </style>
+
+    <style name="LabelMedium">
+        <item name="android:textSize">12sp</item>
+        <item name="lineHeight">16sp</item>
+        <item name="android:letterSpacing">-0.01</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textColor">@color/text</item>
+    </style>
+
+    <style name="LabelSmall">
+        <item name="android:textSize">11sp</item>
+        <item name="lineHeight">16sp</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textColor">@color/text</item>
+    </style>
+
+    <!--
+        Body
+    -->
+    <style name="BodyLarge">
+        <item name="android:textSize">16sp</item>
+        <item name="lineHeight">24sp</item>
+        <item name="android:letterSpacing">0.005</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textColor">@color/text</item>
+    </style>
+
+    <style name="BodyMedium">
+        <item name="android:textSize">14sp</item>
+        <item name="lineHeight">20sp</item>
+        <item name="android:letterSpacing">0.005</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textColor">@color/text</item>
+    </style>
+
+    <style name="BodySmall">
+        <item name="android:textSize">12sp</item>
+        <item name="lineHeight">16sp</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textColor">@color/text</item>
+    </style>
+</resources>
