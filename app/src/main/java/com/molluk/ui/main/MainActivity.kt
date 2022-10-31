@@ -45,6 +45,9 @@ class MainActivity : AppCompatActivity() {
             if (destination.id == R.id.homeFragment || destination.id == R.id.favouritesFragment || destination.id == R.id.settingsFragment) {
                 isBottomNavigationVisible = true
                 showBottomNavigation(true)
+            } else {
+                isBottomNavigationVisible = true
+                showBottomNavigation(true)
             }
         }
 

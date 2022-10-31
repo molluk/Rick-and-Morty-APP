@@ -3,4 +3,10 @@
     <string name="main_home_tab">Home</string>
     <string name="main_favorites_tab">Favorites</string>
     <string name="main_settings_tab">Settings</string>
+    <string name="character_title">Character</string>
+    <string name="character_description">Used to get all the characters</string>
+    <string name="location_title">Location</string>
+    <string name="location_description">Used to get all the locations</string>
+    <string name="episode_title">Episode</string>
+    <string name="episode_description">Used to get all the episodes</string>
 </resources>
