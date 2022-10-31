@@ -1,24 +1,189 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
     </data>
 
-    <LinearLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingHorizontal="16dp"
-        android:paddingVertical="32dp"
-        android:orientation="vertical">
+        android:fitsSystemWindows="true"
+        tools:context=".ui.home.HomeFragment">
 
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            style="@style/BodyLarge"
-            android:text="HOME FRAGMENT"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    </LinearLayout>
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="32dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/character"
+                        style="@style/CustomCardView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:background="?selectableItemBackground">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:padding="16dp">
+
+                            <com.google.android.material.imageview.ShapeableImageView
+                                android:id="@+id/characterImg"
+                                style="@style/IconRound"
+                                loadImageFromUrl='@{"https://rickandmortyapi.com/api/character/avatar/1.jpeg"}'
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="12dp"
+                                android:orientation="vertical"
+                                app:layout_constraintBottom_toBottomOf="@+id/characterImg"
+                                app:layout_constraintStart_toEndOf="@+id/characterImg"
+                                app:layout_constraintTop_toTopOf="@+id/characterImg">
+
+                                <com.google.android.material.textview.MaterialTextView
+                                    android:id="@+id/characterTitle"
+                                    style="@style/TitleMedium"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/character_title" />
+
+                                <com.google.android.material.textview.MaterialTextView
+                                    android:id="@+id/characterDescr"
+                                    style="@style/BodySmall"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/character_description"
+                                    android:textColor="@color/color_gray" />
+                            </LinearLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/location"
+                        style="@style/CustomCardView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:background="?selectableItemBackground">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:padding="16dp">
+
+                            <com.google.android.material.imageview.ShapeableImageView
+                                android:id="@+id/locationImg"
+                                style="@style/IconRound"
+                                loadImageFromUrl='@{"https://pyxis.nymag.com/v1/imgs/e9d/1f3/b597372347a09beca86aaf1b6253bf70fd-rick-and-morty.rsquare.w700.jpg"}'
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="12dp"
+                                android:orientation="vertical"
+                                app:layout_constraintBottom_toBottomOf="@+id/locationImg"
+                                app:layout_constraintStart_toEndOf="@+id/locationImg"
+                                app:layout_constraintTop_toTopOf="@+id/locationImg">
+
+                                <com.google.android.material.textview.MaterialTextView
+                                    android:id="@+id/locationTitle"
+                                    style="@style/TitleMedium"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/location_title" />
+
+                                <com.google.android.material.textview.MaterialTextView
+                                    android:id="@+id/locationDescr"
+                                    style="@style/BodySmall"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/location_description"
+                                    android:textColor="@color/color_gray" />
+                            </LinearLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/episode"
+                        style="@style/CustomCardView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:background="?selectableItemBackground">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:padding="16dp">
+
+                            <com.google.android.material.imageview.ShapeableImageView
+                                android:id="@+id/episodeImg"
+                                style="@style/IconRound"
+                                loadImageFromUrl='@{"https://subpop-img.s3.amazonaws.com/asset/productable_images/attachments/000/007/585/max_960/rickandmorty-soundtrack-cover-digital-3000x3000.jpg"}'
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="12dp"
+                                android:orientation="vertical"
+                                app:layout_constraintBottom_toBottomOf="@+id/episodeImg"
+                                app:layout_constraintStart_toEndOf="@+id/episodeImg"
+                                app:layout_constraintTop_toTopOf="@+id/episodeImg">
+
+                                <com.google.android.material.textview.MaterialTextView
+                                    android:id="@+id/episodeTitle"
+                                    style="@style/TitleMedium"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/episode_title" />
+
+                                <com.google.android.material.textview.MaterialTextView
+                                    android:id="@+id/episodeDescr"
+                                    style="@style/BodySmall"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/episode_description"
+                                    android:textColor="@color/color_gray" />
+                            </LinearLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </com.google.android.material.card.MaterialCardView>
+                </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
+        </LinearLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

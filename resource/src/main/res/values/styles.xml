@@ -1,10 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Appbar" parent="Widget.Material3.AppBarLayout">
+        <item name="android:background">@color/color_background_default</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="Toolbar" parent="Widget.Material3.Toolbar">
+        <item name="android:background">@color/transparent</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">64dp</item>
+    </style>
+
+    <style name="Toolbar.Back" parent="Toolbar">
+        <item name="navigationIcon">@drawable/arrow_back</item>
+        <item name="navigationIconTint">@color/text</item>
+    </style>
+
     <style name="BottomNavigationView" parent="Widget.Material3.BottomNavigationView">
         <item name="itemActiveIndicatorStyle">@style/BottomNavigationView.Indicator</item>
         <item name="itemTextAppearanceActive">@style/LabelMedium</item>
         <item name="itemTextAppearanceInactive">@style/LabelMedium</item>
-        <item name="itemRippleColor">@color/color_gray_default</item>
+        <item name="itemRippleColor">@color/color_gray</item>
         <item name="indicatorColor">@color/color_background_default</item>
         <item name="backgroundTint">@color/color_background_tile</item>
         <item name="background">@color/color_background_tile</item>
@@ -14,7 +32,7 @@
 
     <style name="ThemeOverlay.BottomNavigationView" parent="">
         <item name="colorOnSurface">@color/icon_select</item>
-        <item name="colorOnSurfaceVariant">@color/color_gray_default</item>
+        <item name="colorOnSurfaceVariant">@color/color_gray</item>
         <item name="colorOnSecondaryContainer">@color/icon_select</item>
     </style>
 
@@ -22,5 +40,40 @@
         <item name="android:color">@color/color_background_default</item>
     </style>
 
+    <style name="CustomCardView">
+        <item name="cardElevation">0dp</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="cardCornerRadius">12dp</item>
+        <item name="android:shadowRadius">10</item>
+        <item name="android:shadowDy">8</item>
+        <item name="strokeColor">@color/text</item>
+        <item name="android:outlineSpotShadowColor">#CC000000</item>
+        <item name="android:outlineAmbientShadowColor">#CC000000</item>
+        <item name="android:backgroundTint">@color/color_background_tile</item>
+    </style>
 
+    <style name="ShapeAppearanceOverlay.Circle" parent="">
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="IconRound" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">100%</item>
+        <item name="android:padding">1dp</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.Circle</item>
+        <item name="strokeColor">@color/color_separator</item>
+        <item name="strokeWidth">1dp</item>
+    </style>
+
+    <style name="IconRoundNoStoke" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">100%</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.Circle</item>
+    </style>
+
+    <style name="Separator">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/color_separator</item>
+    </style>
 </resources>
