@@ -1,4 +1,5 @@
 package com.molluk.data.character.models
+import java.io.Serializable
 
 data class CharacterResponseData(
     val data: CharacterResult
@@ -17,7 +18,7 @@ data class CharacterResult (
     val episode: List<String>,
     val url: String,
     val created: String
-)
+): Serializable
 
 data class CharacterLocation (
     val name: String,

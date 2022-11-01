@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.switchMap
 import com.molluk.data.character.network.CharacterRepository
 import com.molluk.ui.base.BaseViewModel
+import com.molluk.ui.base.Event
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -15,13 +16,13 @@ class CharacterViewModel @Inject constructor(
     val allCharactersResponse = repository.getAllCharacters()
 
     //get characters in page №
-    private var _allCharactersInPage = MutableLiveData<String>()
+    private var _allCharactersInPage = MutableLiveData<Event<String>>()
 
     val allCharacterInPageResponse = _allCharactersInPage.switchMap { request ->
-        repository.getAllCharacterInPage(request)
+        repository.getAllCharacterInPage(request.peekContent())
     }
 
     fun getAllCharacterInPage(pageNum: Int) {
-        _allCharactersInPage.value = "character/?page=$pageNum"
+        _allCharactersInPage.value = Event("character/?page=$pageNum")
     }
 }

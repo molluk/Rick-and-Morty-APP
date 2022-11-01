@@ -23,7 +23,20 @@
         tools:layout="@layout/fragment_categories">
         <argument
             android:name="categories"
-            app:argType="string"/>
+            app:argType="string" />
+        <action
+            android:id="@+id/action_categoriesFragment_to_characterFragment"
+            app:destination="@id/characterFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/characterFragment"
+        android:name="com.molluk.ui.home.categories.character.CharacterFragment"
+        android:label="fragment_character"
+        tools:layout="@layout/fragment_character">
+        <argument
+            android:name="data"
+            app:argType="com.molluk.data.character.models.CharacterResult" />
     </fragment>
 
     <fragment
