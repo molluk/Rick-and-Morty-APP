@@ -3,7 +3,10 @@ package com.resource
 import android.content.res.Resources
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.Animation
 import android.view.animation.DecelerateInterpolator
+import android.view.animation.LinearInterpolator
+import android.view.animation.RotateAnimation
 import androidx.transition.Fade
 import androidx.transition.Slide
 import androidx.transition.Transition
@@ -53,5 +56,20 @@ fun View.fadeVisibility(visibility: Int, duration: Long = 300, postDelay: Long =
                 }
         }, postDelay)
     }
+}
+
+fun View.customRotate(from: Float, to: Float, duration: Long, fillAfter: Boolean) {
+    val rotate = RotateAnimation(
+        from,
+        to,
+        Animation.RELATIVE_TO_SELF,
+        0.5f,
+        Animation.RELATIVE_TO_SELF,
+        0.5f
+    )
+    rotate.duration = duration
+    rotate.fillAfter = fillAfter
+    rotate.interpolator = LinearInterpolator()
+    this.startAnimation(rotate)
 }
 

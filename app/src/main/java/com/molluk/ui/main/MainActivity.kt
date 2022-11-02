@@ -46,8 +46,8 @@ class MainActivity : AppCompatActivity() {
                 isBottomNavigationVisible = true
                 showBottomNavigation(true)
             } else {
-                isBottomNavigationVisible = true
-                showBottomNavigation(true)
+                isBottomNavigationVisible = false
+                showBottomNavigation(false)
             }
         }
 
@@ -82,5 +82,9 @@ class MainActivity : AppCompatActivity() {
             }
         }
         return super.dispatchTouchEvent(event)
+    }
+
+    fun changeNavigationBarColor(colorResource: Int) {
+        window.navigationBarColor = resources.getColor(colorResource, theme);
     }
 }

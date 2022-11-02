@@ -76,4 +76,25 @@
         <item name="android:layout_height">1dp</item>
         <item name="android:background">@color/color_separator</item>
     </style>
+
+    <style name="Button.Numpad" parent="@style/Widget.MaterialComponents.Button.TextButton">
+        <item name="android:insetRight">0dp</item>
+        <item name="android:insetLeft">0dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:textAppearance">@style/HeadlineLarge</item>
+        <item name="android:textColor">@color/text</item>
+        <item name="cornerRadius">40dp</item>
+        <item name="android:layout_width">80dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:minWidth">80dp</item>
+        <item name="android:minHeight">80dp</item>
+        <item name="rippleColor">@color/color_gray</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.Circle.Button" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">100%</item>
+    </style>
 </resources>

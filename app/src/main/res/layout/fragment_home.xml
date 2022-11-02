@@ -68,14 +68,14 @@
                                     style="@style/TitleMedium"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="@string/character_title" />
+                                    android:text="@string/home_character_title" />
 
                                 <com.google.android.material.textview.MaterialTextView
                                     android:id="@+id/characterDescr"
                                     style="@style/BodySmall"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="@string/character_description"
+                                    android:text="@string/home_character_description"
                                     android:textColor="@color/color_gray" />
                             </LinearLayout>
                         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -119,14 +119,14 @@
                                     style="@style/TitleMedium"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="@string/location_title" />
+                                    android:text="@string/home_location_title" />
 
                                 <com.google.android.material.textview.MaterialTextView
                                     android:id="@+id/locationDescr"
                                     style="@style/BodySmall"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="@string/location_description"
+                                    android:text="@string/home_location_description"
                                     android:textColor="@color/color_gray" />
                             </LinearLayout>
                         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -170,14 +170,14 @@
                                     style="@style/TitleMedium"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="@string/episode_title" />
+                                    android:text="@string/home_episode_title" />
 
                                 <com.google.android.material.textview.MaterialTextView
                                     android:id="@+id/episodeDescr"
                                     style="@style/BodySmall"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="@string/episode_description"
+                                    android:text="@string/home_episode_description"
                                     android:textColor="@color/color_gray" />
                             </LinearLayout>
                         </androidx.constraintlayout.widget.ConstraintLayout>
