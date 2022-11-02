@@ -6,6 +6,17 @@
     <ConstraintSet android:id="@+id/start">
 
         <Constraint
+            android:id="@+id/back"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            app:layout_constraintBottom_toBottomOf="@+id/image"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/image"
+            app:layout_constraintTop_toTopOf="@+id/image"
+            app:transitionEasing="cubic(0.05, 0.5, 1.0, 1.0)"
+            app:visibilityMode="ignore" />
+
+        <Constraint
             android:id="@+id/share"
             android:layout_width="56dp"
             android:layout_height="56dp"
@@ -13,7 +24,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/image"
             app:layout_constraintTop_toTopOf="@+id/image"
-            app:transitionEasing="cubic(0.05, 0.5, 1.0, 1.0)"
+            app:transitionEasing="cubic(0, 0, 0.58, 1.0)"
             app:visibilityMode="ignore" />
 
         <Constraint
@@ -32,6 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
+            android:gravity="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_weight="1"
             app:layout_constraintStart_toStartOf="parent"
@@ -56,12 +68,21 @@
     <ConstraintSet android:id="@+id/end">
 
         <Constraint
+            android:id="@+id/back"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            app:layout_constraintBottom_toBottomOf="@+id/bgTop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/bgTop"
+            app:visibilityMode="ignore" />
+
+        <Constraint
             android:id="@+id/image"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="4dp"
             android:layout_marginTop="12dp"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@id/back"
             app:layout_constraintTop_toTopOf="parent"
             app:visibilityMode="ignore" />
 
@@ -77,27 +98,25 @@
 
         <Constraint
             android:id="@+id/name"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             app:layout_constraintBottom_toBottomOf="@id/image"
-            app:layout_constraintEnd_toStartOf="@+id/share"
-            app:layout_constraintHorizontal_weight="1"
             app:layout_constraintStart_toEndOf="@id/image"
             app:layout_constraintTop_toTopOf="@id/image"
             app:visibilityMode="ignore" />
 
-<!--        <Constraint-->
-<!--            android:id="@+id/nestedScroll"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="12dp"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/image"-->
-<!--            app:layout_goneMarginTop="0dp"-->
-<!--            app:visibilityMode="ignore" />-->
+        <Constraint
+            android:id="@+id/nestedScroll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/image"
+            app:layout_goneMarginTop="0dp"
+            app:visibilityMode="ignore" />
 
         <Constraint
             android:id="@+id/bgTop"

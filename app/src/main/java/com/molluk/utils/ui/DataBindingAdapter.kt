@@ -1,6 +1,13 @@
 package com.molluk.utils.ui
 
+import android.graphics.Color
+import android.text.TextUtils
+import android.text.method.LinkMovementMethod
+import android.text.util.Linkify
 import android.widget.ImageView
+import android.widget.TextView
+import androidx.core.text.HtmlCompat
+import androidx.core.widget.NestedScrollView
 import androidx.databinding.BindingAdapter
 import coil.load
 import com.resource.R
@@ -11,10 +18,30 @@ fun ImageView.loadImageFromUrl(url: String?) {
         this.load(url)
         {
             crossfade(true)
-            //загрузка
             placeholder(R.drawable.timer)
-            //ошибка
             error(R.drawable.timer_off)
         }
     }
+}
+
+fun NestedScrollView.scrollToTop() {
+    this.customScrollTo(0, 0)
+}
+
+fun NestedScrollView.customScrollTo(x: Int, y: Int) {
+    this.post {
+        fling(0)
+        smoothScrollTo(x, y, 500)
+    }
+}
+
+@BindingAdapter("link")
+fun TextView.link(link: String) {
+    this.autoLinkMask = Linkify.WEB_URLS
+    this.isClickable = true
+    this.movementMethod = LinkMovementMethod.getInstance()
+    this.text = HtmlCompat.fromHtml(link, HtmlCompat.FROM_HTML_MODE_COMPACT)
+    this.setLinkTextColor(Color.BLUE)
+    this.setTextColor(Color.BLUE)
+    this.ellipsize = TextUtils.TruncateAt.MIDDLE
 }
