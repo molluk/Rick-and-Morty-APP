@@ -20,12 +20,8 @@
     <string name="character_species">Species: %s</string>
     <string name="character_type">Type: %s</string>
     <string name="character_gender">Gender: %s</string>
-    <string name="character_origin">Origin</string>
-    <string name="character_origin_name">Name: %s</string>
-    <string name="character_origin_url">Url: </string>
-    <string name="character_location">Location</string>
-    <string name="character_location_name">Name: %s</string>
-    <string name="character_location_url">Url: </string>
+    <string name="character_origin">Origin: %s</string>
+    <string name="character_location">Location: %s</string>
     <string name="character_image">Image: </string>
     <string name="character_episode">Episode</string>
     <string name="character_url">Url: </string>

@@ -15,7 +15,7 @@ data class CharacterResult (
     val origin: CharacterLocation,
     val location: CharacterLocation,
     val image: String,
-    val episode: List<String>,
+    val episode: MutableList<String>,
     val url: String,
     val created: String
 ): Serializable

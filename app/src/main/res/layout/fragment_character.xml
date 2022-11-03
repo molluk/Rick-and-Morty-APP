@@ -51,15 +51,15 @@
 
                 </com.google.android.material.appbar.MaterialToolbar>
 
-                <View
-                    android:id="@+id/separatorTop"
-                    style="@style/Separator"
-                    android:layout_height="1dp"
-                    android:background="@color/color_separator"
-                    android:visibility="gone"
-                    tools:visibility="visible" />
-
             </com.google.android.material.appbar.AppBarLayout>
+
+            <View
+                android:id="@+id/separatorTop"
+                style="@style/Separator"
+                android:visibility="gone"
+                android:elevation="1dp"
+                app:layout_constraintTop_toBottomOf="@id/bgTop"
+                tools:visibility="visible" />
 
             <ImageButton
                 android:id="@+id/back"
@@ -94,7 +94,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|top"
                 android:layout_marginTop="24dp"
-                android:ellipsize="middle"
+                android:ellipsize="end"
                 android:gravity="center"
                 android:lines="1"
                 android:text='@{data.name}'
@@ -127,7 +127,8 @@
                 android:clipToPadding="false"
                 android:overScrollMode="never"
                 android:paddingHorizontal="16dp"
-                android:paddingVertical="24dp"
+                android:paddingTop="24dp"
+                android:paddingBottom="64dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/name">
@@ -147,84 +148,172 @@
                         style="@style/CustomCardView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp">
+                        android:layout_marginTop="4dp"
+                        android:elevation="0dp">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
-                            android:padding="12dp">
+                            android:paddingVertical="6dp">
 
                             <com.google.android.material.textview.MaterialTextView
                                 android:id="@+id/characterId"
                                 style="@style/BodyMedium"
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:paddingVertical="8dp"
+                                android:paddingStart="12dp"
+                                android:paddingEnd="8dp"
                                 android:text='@{@string/character_id(data.id)}'
                                 android:textColor="@color/text"
                                 android:visibility="@{data.id == 0 || data.id == -1 ? View.GONE : View.VISIBLE}"
                                 tools:text="@string/character_id" />
 
+                            <View
+                                style="@style/Separator"
+                                android:layout_marginHorizontal="16dp"
+                                android:visibility="@{data.id == 0 || data.id == -1 ? View.GONE : View.VISIBLE}" />
+
                             <com.google.android.material.textview.MaterialTextView
                                 android:id="@+id/characterName"
                                 style="@style/BodyMedium"
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="2dp"
+                                android:paddingVertical="8dp"
+                                android:paddingStart="12dp"
+                                android:paddingEnd="8dp"
                                 android:text='@{@string/character_name(data.name)}'
                                 android:textColor="@color/text"
                                 android:visibility="@{data.name == null || data.name.empty ? View.GONE : View.VISIBLE}"
                                 tools:text="@string/character_name" />
 
+                            <View
+                                style="@style/Separator"
+                                android:layout_marginHorizontal="16dp"
+                                android:visibility="@{data.name == null || data.name.empty ? View.GONE : View.VISIBLE}" />
+
                             <com.google.android.material.textview.MaterialTextView
                                 android:id="@+id/characterStatus"
                                 style="@style/BodyMedium"
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="2dp"
+                                android:paddingVertical="8dp"
+                                android:paddingStart="12dp"
+                                android:paddingEnd="8dp"
                                 android:text='@{@string/character_status(data.status)}'
                                 android:textColor="@color/text"
                                 android:visibility="@{data.status == null || data.status.empty ? View.GONE : View.VISIBLE}"
                                 tools:text="@string/character_status" />
 
+                            <View
+                                style="@style/Separator"
+                                android:layout_marginHorizontal="16dp"
+                                android:visibility="@{data.status == null || data.status.empty ? View.GONE : View.VISIBLE}" />
+
                             <com.google.android.material.textview.MaterialTextView
                                 android:id="@+id/characterSpecies"
                                 style="@style/BodyMedium"
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="2dp"
+                                android:paddingVertical="8dp"
+                                android:paddingStart="12dp"
+                                android:paddingEnd="8dp"
                                 android:text='@{@string/character_species(data.species)}'
                                 android:textColor="@color/text"
                                 android:visibility="@{data.species == null || data.species.empty ? View.GONE : View.VISIBLE}"
                                 tools:text="@string/character_species" />
 
+                            <View
+                                style="@style/Separator"
+                                android:layout_marginHorizontal="16dp"
+                                android:visibility="@{data.species == null || data.species.empty ? View.GONE : View.VISIBLE}" />
+
                             <com.google.android.material.textview.MaterialTextView
                                 android:id="@+id/characterType"
                                 style="@style/BodyMedium"
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="2dp"
+                                android:paddingVertical="8dp"
+                                android:paddingStart="12dp"
+                                android:paddingEnd="8dp"
                                 android:text='@{@string/character_type(data.type)}'
                                 android:textColor="@color/text"
                                 android:visibility="@{data.type == null || data.type.empty ? View.GONE : View.VISIBLE}"
                                 tools:text="@string/character_type" />
 
+                            <View
+                                style="@style/Separator"
+                                android:layout_marginHorizontal="16dp"
+                                android:visibility="@{data.type == null || data.type.empty ? View.GONE : View.VISIBLE}" />
+
                             <com.google.android.material.textview.MaterialTextView
                                 android:id="@+id/characterGender"
                                 style="@style/BodyMedium"
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="2dp"
+                                android:paddingVertical="8dp"
+                                android:paddingStart="12dp"
+                                android:paddingEnd="8dp"
                                 android:text='@{@string/character_gender(data.gender)}'
                                 android:textColor="@color/text"
                                 android:visibility="@{data.gender == null || data.gender.empty ? View.GONE : View.VISIBLE}"
                                 tools:text="@string/character_gender" />
 
+                            <View
+                                style="@style/Separator"
+                                android:layout_marginHorizontal="16dp"
+                                android:visibility="@{data.gender == null || data.gender.empty ? View.GONE : View.VISIBLE}" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/characterOrigin"
+                                style="@style/BodyMedium"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="?selectableItemBackground"
+                                android:drawableEnd="@drawable/arrow_forward_ios_16"
+                                android:drawableTint="@color/color_gray"
+                                android:paddingVertical="8dp"
+                                android:paddingStart="12dp"
+                                android:paddingEnd="8dp"
+                                android:text='@{@string/character_origin(data.origin.name)}'
+                                android:textColor="@color/text"
+                                android:visibility="@{data.origin.name == null || data.origin.name.empty ? View.GONE : View.VISIBLE}"
+                                tools:text="@string/character_origin" />
+
+                            <View
+                                style="@style/Separator"
+                                android:layout_marginHorizontal="16dp"
+                                android:visibility="@{data.origin.name == null || data.origin.name.empty ? View.GONE : View.VISIBLE}" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/characterLocation"
+                                style="@style/BodyMedium"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="?selectableItemBackground"
+                                android:drawableEnd="@drawable/arrow_forward_ios_16"
+                                android:drawableTint="@color/color_gray"
+                                android:paddingVertical="8dp"
+                                android:paddingStart="12dp"
+                                android:paddingEnd="8dp"
+                                android:text='@{@string/character_location(data.location.name)}'
+                                android:textColor="@color/text"
+                                android:visibility="@{data.location.name == null || data.location.name.empty ? View.GONE : View.VISIBLE}"
+                                tools:text="@string/character_location" />
+
+                            <View
+                                style="@style/Separator"
+                                android:layout_marginHorizontal="16dp"
+                                android:visibility="@{data.location.name == null || data.location.name.empty ? View.GONE : View.VISIBLE}" />
+
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="2dp"
                                 android:orientation="horizontal"
+                                android:paddingVertical="8dp"
+                                android:paddingStart="12dp"
+                                android:paddingEnd="8dp"
                                 android:visibility="@{data.image == null || data.image.empty ? View.GONE : View.VISIBLE}">
 
                                 <com.google.android.material.textview.MaterialTextView
@@ -239,17 +328,25 @@
                                     link="@{data.image}"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
+                                    android:layout_marginStart="4dp"
                                     android:layout_weight="1"
                                     android:ellipsize="middle"
                                     android:maxLines="1"
                                     tools:text="https://rickandmortyapi.com/api/character/avatar/2.jpeg" />
                             </LinearLayout>
 
+                            <View
+                                style="@style/Separator"
+                                android:layout_marginHorizontal="16dp"
+                                android:visibility="@{data.image == null || data.image.empty ? View.GONE : View.VISIBLE}" />
+
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="2dp"
                                 android:orientation="horizontal"
+                                android:paddingVertical="8dp"
+                                android:paddingStart="12dp"
+                                android:paddingEnd="8dp"
                                 android:visibility="@{data.url == null || data.url.empty ? View.GONE : View.VISIBLE}">
 
                                 <com.google.android.material.textview.MaterialTextView
@@ -264,18 +361,26 @@
                                     link="@{data.url}"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
+                                    android:layout_marginStart="4dp"
                                     android:layout_weight="1"
                                     android:ellipsize="middle"
                                     android:maxLines="1"
                                     tools:text="https://rickandmortyapi.com/api/character/2" />
                             </LinearLayout>
 
+                            <View
+                                style="@style/Separator"
+                                android:layout_marginHorizontal="16dp"
+                                android:visibility="@{data.url == null || data.url.empty ? View.GONE : View.VISIBLE}" />
+
                             <com.google.android.material.textview.MaterialTextView
                                 android:id="@+id/characterCreated"
                                 style="@style/BodyMedium"
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="2dp"
+                                android:paddingVertical="8dp"
+                                android:paddingStart="12dp"
+                                android:paddingEnd="8dp"
                                 android:text='@{@string/character_created(data.created)}'
                                 android:textColor="@color/text"
                                 android:visibility="@{data.created == null || data.created.empty ? View.GONE : View.VISIBLE}"
@@ -286,98 +391,9 @@
 
                     </com.google.android.material.card.MaterialCardView>
 
-                    <com.google.android.material.textview.MaterialTextView
-                        style="@style/TitleMedium"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
-                        android:text="@string/character_origin" />
-
-                    <com.google.android.material.card.MaterialCardView
-                        android:id="@+id/origin"
-                        style="@style/CustomCardView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:background="?selectableItemBackground"
-                        android:visibility="@{data.origin == null ? View.GONE : View.VISIBLE }">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal"
-                            android:paddingVertical="8dp"
-                            android:paddingStart="12dp"
-                            android:paddingEnd="8dp">
-
-                            <com.google.android.material.textview.MaterialTextView
-                                android:id="@+id/characterOriginName"
-                                style="@style/BodyMedium"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text='@{@string/character_origin_name(data.origin.name)}'
-                                android:textColor="@color/text"
-                                android:visibility="@{data.origin.name == null || data.origin.name.empty ? View.GONE : View.VISIBLE}"
-                                tools:text="@string/character_origin_name" />
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/chevron_right"
-                                app:tint="@color/color_gray" />
-                        </LinearLayout>
-                    </com.google.android.material.card.MaterialCardView>
-
-                    <com.google.android.material.textview.MaterialTextView
-                        style="@style/TitleMedium"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
-                        android:text="@string/character_location" />
-
-                    <com.google.android.material.card.MaterialCardView
-                        android:id="@+id/location"
-                        style="@style/CustomCardView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:background="?selectableItemBackground"
-                        android:visibility="@{data.location == null ? View.GONE : View.VISIBLE }">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal"
-                            android:paddingVertical="8dp"
-                            android:paddingStart="12dp"
-                            android:paddingEnd="8dp">
-
-                            <com.google.android.material.textview.MaterialTextView
-                                android:id="@+id/characterLocationName"
-                                style="@style/BodyMedium"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text='@{@string/character_location_name(data.location.name)}'
-                                android:textColor="@color/text"
-                                android:visibility="@{data.location.name == null || data.location.name.empty ? View.GONE : View.VISIBLE}"
-                                tools:text="@string/character_location_name" />
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/chevron_right"
-                                app:tint="@color/color_gray" />
-
-                        </LinearLayout>
-                    </com.google.android.material.card.MaterialCardView>
-
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:id="@+id/episodeTitle"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
                         android:gravity="center_vertical"
@@ -404,6 +420,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
+                        android:elevation="0dp"
                         android:visibility="gone"
                         tools:visibility="visible">
 
@@ -411,12 +428,11 @@
                             android:id="@+id/recyclerLinks"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:clipToPadding="false"
                             android:nestedScrollingEnabled="false"
                             android:orientation="vertical"
-                            android:padding="12dp"
                             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                            tools:itemCount="2" />
+                            tools:itemCount="2"
+                            tools:listitem="@layout/item_episode" />
                     </com.google.android.material.card.MaterialCardView>
                 </LinearLayout>
 
