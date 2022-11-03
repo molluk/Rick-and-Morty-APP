@@ -6,6 +6,15 @@
     <ConstraintSet android:id="@+id/start">
 
         <Constraint
+            android:id="@+id/separatorTop"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            app:visibilityMode="ignore"
+            app:layout_constraintTop_toBottomOf="@id/bgTop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <Constraint
             android:id="@+id/back"
             android:layout_width="56dp"
             android:layout_height="56dp"
@@ -68,6 +77,15 @@
     <ConstraintSet android:id="@+id/end">
 
         <Constraint
+            android:id="@+id/separatorTop"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            app:visibilityMode="ignore"
+            app:layout_constraintTop_toBottomOf="@id/bgTop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <Constraint
             android:id="@+id/back"
             android:layout_width="56dp"
             android:layout_height="56dp"
@@ -98,13 +116,15 @@
 
         <Constraint
             android:id="@+id/name"
-            android:layout_width="wrap_content"
+            app:layout_constraintHorizontal_weight="1"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
+            android:layout_width="0dp"
             app:layout_constraintBottom_toBottomOf="@id/image"
             app:layout_constraintStart_toEndOf="@id/image"
             app:layout_constraintTop_toTopOf="@id/image"
+            app:layout_constraintEnd_toStartOf="@id/share"
             app:visibilityMode="ignore" />
 
         <Constraint

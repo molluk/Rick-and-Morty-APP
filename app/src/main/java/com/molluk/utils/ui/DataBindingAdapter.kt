@@ -10,6 +10,7 @@ import androidx.core.text.HtmlCompat
 import androidx.core.widget.NestedScrollView
 import androidx.databinding.BindingAdapter
 import coil.load
+import com.molluk.ui.home.categories.Categories
 import com.resource.R
 
 @BindingAdapter("loadImageFromUrl", requireAll = false)
@@ -41,7 +42,15 @@ fun TextView.link(link: String) {
     this.isClickable = true
     this.movementMethod = LinkMovementMethod.getInstance()
     this.text = HtmlCompat.fromHtml(link, HtmlCompat.FROM_HTML_MODE_COMPACT)
-    this.setLinkTextColor(Color.BLUE)
-    this.setTextColor(Color.BLUE)
+    this.setLinkTextColor(Color.CYAN)
+    this.setTextColor(Color.CYAN)
     this.ellipsize = TextUtils.TruncateAt.MIDDLE
+}
+
+@BindingAdapter("showEpisodeTitle")
+fun TextView.showEpisodeTitle(link: String) {
+    val episode = Categories.Episode.name
+    val newLink = link.substring(link.lastIndexOf(episode.lowercase()), link.length)
+        .replace("/", " ").replace(episode.lowercase(), episode)
+    this.text = newLink
 }

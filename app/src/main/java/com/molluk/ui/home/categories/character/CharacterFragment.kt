@@ -6,13 +6,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.core.graphics.ColorUtils
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.molluk.databinding.FragmentCharacterBinding
 import com.molluk.ui.base.BaseFragment
 import androidx.navigation.fragment.navArgs
 import com.molluk.BR
+import com.molluk.ui.base.list.setDivider
+import com.molluk.ui.base.list.setNoBottomDivider
+import com.molluk.ui.base.list.toBaseList
+import com.molluk.ui.home.categories.ClickerViewModel
 import com.molluk.utils.ui.scrollToTop
 import com.resource.customRotate
 import com.resource.fadeVisibility
@@ -21,7 +27,11 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class CharacterFragment : BaseFragment() {
     private lateinit var binding: FragmentCharacterBinding
+
     private val args: CharacterFragmentArgs by navArgs()
+    private val clickerViewModel: ClickerViewModel by viewModels()
+
+    private lateinit var episodeAdapter: EpisodeAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,8 +40,9 @@ class CharacterFragment : BaseFragment() {
     ): View {
         binding = FragmentCharacterBinding.inflate(inflater, container, false)
         binding.setVariable(BR.data, args.data)
-
+        setShowDividerScrollListener(binding.nestedScroll, binding.separatorTop)
         initViews()
+        setApiObservers()
 
         return binding.root
     }
@@ -52,14 +63,13 @@ class CharacterFragment : BaseFragment() {
                     endId: Int,
                     progress: Float
                 ) {
+                    share.setBackgroundColor(Color.TRANSPARENT)
                     val alpha = bgTop.alpha * 255
                     val color = ColorUtils.setAlphaComponent(
                         requireContext().getColor(com.resource.R.color.color_background_tile),
                         alpha.toInt()
                     )
-
                     requireActivity().window.statusBarColor = color
-                    binding.separatorTop.visibility = View.INVISIBLE
                 }
 
                 override fun onTransitionCompleted(
@@ -68,7 +78,6 @@ class CharacterFragment : BaseFragment() {
                 ) {
                     share.setBackgroundColor(Color.TRANSPARENT)
                     binding.bgTop.visibility = View.INVISIBLE
-                    binding.separatorTop.visibility = View.INVISIBLE
                     val alpha = bgTop.alpha * 255
                     val color = ColorUtils.setAlphaComponent(
                         requireContext().getColor(com.resource.R.color.color_background_tile),
@@ -103,14 +112,24 @@ class CharacterFragment : BaseFragment() {
                     )
                 )
             }
-            origin.setOnClickListener {
+            toolbar.setOnClickListener {
+                nestedScroll.scrollToTop()
+                motionLayout.transitionToStart()
+            }
+            characterOrigin.setOnClickListener {
 
             }
-            location.setOnClickListener {
+            characterLocation.setOnClickListener {
 
             }
+            episodeAdapter = EpisodeAdapter(clickerViewModel)
+            episodeAdapter.clearData()
+            episodeAdapter.addData(args.data.episode.toBaseList().toMutableList())
+            recyclerLinks.adapter = episodeAdapter
+            recyclerLinks.setNoBottomDivider(com.resource.R.drawable.shape_separator)
+
             episodeTitle.setOnClickListener {
-                when(binding.moreEpisode.visibility){
+                when (binding.moreEpisode.visibility) {
                     View.VISIBLE -> {
                         binding.moreEpisode.fadeVisibility(View.GONE)
                         binding.showMoreEpisode.customRotate(180f, 360f, 250, true)
@@ -121,6 +140,16 @@ class CharacterFragment : BaseFragment() {
                             binding.showMoreEpisode.customRotate(0f, 180f, 250, true)
                         }
                     }
+                }
+            }
+        }
+    }
+
+    private fun setApiObservers() {
+        clickerViewModel.clickElement.observe(viewLifecycleOwner) { event ->
+            event.getContentIfNotHandledOrReturnNull()?.let {
+                if (it is String) {
+                    Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
                 }
             }
         }

@@ -13,6 +13,7 @@ class CategoriesAdapter(
     private val clickerViewModel: ClickerViewModel
 ) :
     BaseAdapter() {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         return when (type) {
