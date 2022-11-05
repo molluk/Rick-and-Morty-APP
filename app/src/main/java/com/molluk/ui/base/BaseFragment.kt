@@ -13,10 +13,13 @@ import androidx.navigation.NavDirections
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModel
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.R
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.snackbar.Snackbar
+import com.molluk.ui.home.categories.character.CharacterViewModel
 import com.molluk.ui.main.MainActivity
 import com.resource.fadeVisibility
 
@@ -120,7 +123,6 @@ open class BaseFragment : Fragment() {
                         }
                     }
                 }
-
             } else {
                 if (separatorTop != null && separatorTop.visibility == View.VISIBLE) {
                     separatorTop.apply {
@@ -132,7 +134,6 @@ open class BaseFragment : Fragment() {
                         }
                     }
                 }
-
             }
             if (scroll.canScrollVertically(1)) {
                 if (separatorBottom != null && separatorBottom.visibility == View.GONE) {

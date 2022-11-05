@@ -18,14 +18,7 @@ class CharacterViewHolder(
     override fun fill(item: BaseListItem) {
         if (item.data is CharacterResult) {
             val data = item.data
-            binding.setVariable(
-                BR.data, DefaultItem(
-                    image = data.image,
-                    itemName = data.name,
-                    itemStatus = data.status,
-                    itemType = data.type
-                )
-            )
+            binding.setVariable(BR.data, data)
             binding.parent.setOnClickListener {
                 clickerViewModel.clickElement(data)
             }

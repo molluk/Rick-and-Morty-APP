@@ -9,7 +9,7 @@
 
         <variable
             name="data"
-            type="com.molluk.data.episode.models.EpisodeResult" />
+            type="com.molluk.data.location.models.LocationResult" />
     </data>
 
     <LinearLayout
@@ -29,26 +29,26 @@
                 android:maxLines="1"
                 android:text='@{data.name}'
                 android:visibility="@{data.name == null || data.name.empty ? View.GONE : View.VISIBLE}"
-                tools:text="The Ricklantis Mixup" />
+                tools:text="Citadel of Ricks" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/status"
                 style="@style/BodySmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text='@{data.airDate}'
+                android:text='@{data.type}'
                 android:textColor="@color/color_gray"
-                android:visibility="@{data.airDate == null || data.airDate.empty ? View.GONE : View.VISIBLE}"
-                tools:text="September 10, 2017" />
+                android:visibility="@{data.type == null || data.type.empty ? View.GONE : View.VISIBLE}"
+                tools:text="Space station" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/type"
                 style="@style/BodySmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text='@{data.episode}'
+                android:text='@{data.dimension}'
                 android:textColor="@color/color_gray"
-                android:visibility="@{data.episode == null || data.episode.empty ? View.GONE : View.VISIBLE}"
-                tools:text="S03E07" />
+                android:visibility="@{data.dimension == null || data.dimension.empty ? View.GONE : View.VISIBLE}"
+                tools:text="unknown" />
         </LinearLayout>
 </layout>

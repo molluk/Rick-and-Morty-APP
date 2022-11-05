@@ -26,4 +26,22 @@
     <string name="character_episode">Episode</string>
     <string name="character_url">Url: </string>
     <string name="character_created">Created: %s</string>
+
+    <string name="location_info">Info</string>
+    <string name="location_id">Id: %s</string>
+    <string name="location_name">Name: %s</string>
+    <string name="location_type">Type: %s</string>
+    <string name="location_dimension">Dimension: %s</string>
+    <string name="location_episode">Residents</string>
+    <string name="location_url">Url: </string>
+    <string name="location_created">Created: %s</string>
+
+    <string name="episode_info">Info</string>
+    <string name="episode_id">Id: %s</string>
+    <string name="episode_name">Name: %s</string>
+    <string name="episode_air_date">Air date: %s</string>
+    <string name="episode_episode">Episode: %s</string>
+    <string name="episode_characters">Characters</string>
+    <string name="episode_url">Url: </string>
+    <string name="episode_created">Created: %s</string>
 </resources>

@@ -4,6 +4,9 @@ import android.graphics.Color
 import android.text.TextUtils
 import android.text.method.LinkMovementMethod
 import android.text.util.Linkify
+import android.view.View
+import android.webkit.URLUtil
+import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.text.HtmlCompat
@@ -37,20 +40,40 @@ fun NestedScrollView.customScrollTo(x: Int, y: Int) {
 }
 
 @BindingAdapter("link")
-fun TextView.link(link: String) {
-    this.autoLinkMask = Linkify.WEB_URLS
-    this.isClickable = true
-    this.movementMethod = LinkMovementMethod.getInstance()
-    this.text = HtmlCompat.fromHtml(link, HtmlCompat.FROM_HTML_MODE_COMPACT)
-    this.setLinkTextColor(Color.CYAN)
-    this.setTextColor(Color.CYAN)
-    this.ellipsize = TextUtils.TruncateAt.MIDDLE
+fun TextView.link(link: String?) {
+    if (link != null) {
+        this.autoLinkMask = Linkify.WEB_URLS
+        this.isClickable = true
+        this.movementMethod = LinkMovementMethod.getInstance()
+        this.text = HtmlCompat.fromHtml(link, HtmlCompat.FROM_HTML_MODE_COMPACT)
+        this.setLinkTextColor(Color.CYAN)
+        this.setTextColor(Color.CYAN)
+        this.ellipsize = TextUtils.TruncateAt.MIDDLE
+    }
 }
 
-@BindingAdapter("showEpisodeTitle")
-fun TextView.showEpisodeTitle(link: String) {
-    val episode = Categories.Episode.name
-    val newLink = link.substring(link.lastIndexOf(episode.lowercase()), link.length)
-        .replace("/", " ").replace(episode.lowercase(), episode)
-    this.text = newLink
+@BindingAdapter("showItemTitle")
+fun TextView.showItemTitle(link: String) {
+    if (URLUtil.isValidUrl(link)) {
+        for (el in Categories.values()) {
+            if (link.contains(el.name, ignoreCase = true)) {
+                val category = el.name
+                val newLink = link.substring(link.lastIndexOf(category.lowercase()), link.length)
+                    .replace("/", " ").replace(category.lowercase(), category)
+                this.text = newLink
+            }
+        }
+    }
+    if (this.text.isNullOrEmpty()){
+        this.text = link
+    }
+}
+
+@BindingAdapter("listStringVisibility")
+fun FrameLayout.listStringVisibility(list: MutableList<String>?) {
+    this.visibility = if (list.isNullOrEmpty()) {
+        View.GONE
+    } else {
+        View.VISIBLE
+    }
 }

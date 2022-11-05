@@ -14,4 +14,8 @@ class CharacterNetwork @Inject constructor(
     suspend fun getAllCharacterInPage(link: String) = getResult {
         service.getAllCharacterInPage(link)
     }
+
+    suspend fun getCharactersList(link: String) = getResult {
+        service.getCharactersList(link)
+    }
 }

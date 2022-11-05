@@ -4,9 +4,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.molluk.databinding.ItemCharacterBinding
+import com.molluk.databinding.ItemEpisodeBinding
+import com.molluk.databinding.ItemLocationBinding
 import com.molluk.ui.base.list.BaseAdapter
 import com.molluk.ui.base.list.FillAction
 import com.molluk.ui.home.categories.view_holders.CharacterViewHolder
+import com.molluk.ui.home.categories.view_holders.EpisodeViewHolder
+import com.molluk.ui.home.categories.view_holders.LocationViewHolder
 
 class CategoriesAdapter(
     private val type: String,
@@ -22,10 +26,12 @@ class CategoriesAdapter(
                 CharacterViewHolder(binding, clickerViewModel)
             }
             Categories.Location.name -> {
-                super.onCreateViewHolder(parent, viewType)
+                val binding = ItemLocationBinding.inflate(inflater, parent, false)
+                LocationViewHolder(binding, clickerViewModel)
             }
             else -> {
-                super.onCreateViewHolder(parent, viewType)
+                val binding = ItemEpisodeBinding.inflate(inflater, parent, false)
+                EpisodeViewHolder(binding, clickerViewModel)
             }
         }
     }
