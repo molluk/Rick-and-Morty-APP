@@ -13,8 +13,6 @@ class CharacterViewModel @Inject constructor(
     repository: CharacterRepository
 ) : BaseViewModel() {
 
-    val allCharactersResponse = repository.getAllCharacters()
-
     //get characters in page №
     private var _allCharactersInPage = MutableLiveData<Event<String>>()
 
@@ -24,5 +22,22 @@ class CharacterViewModel @Inject constructor(
 
     fun getAllCharacterInPage(pageNum: Int) {
         _allCharactersInPage.value = Event("character/?page=$pageNum")
+    }
+
+
+    //get characters list
+    private var _charactersList = MutableLiveData<Event<String>>()
+
+    val charactersList = _charactersList.switchMap { request ->
+        repository.getCharactersList(request.peekContent())
+    }
+
+    fun getCharactersList(characters: String) {
+        _charactersList.value = Event("character/$characters")
+    }
+
+    fun getCharactersLink(link: String) {
+        val id = link.substring(link.lastIndexOf("/"), link.length)
+        _charactersList.value = Event("character/$id")
     }
 }

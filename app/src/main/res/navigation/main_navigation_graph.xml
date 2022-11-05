@@ -27,7 +27,17 @@
         <action
             android:id="@+id/action_categoriesFragment_to_characterFragment"
             app:destination="@id/characterFragment" />
+        <action
+            android:id="@+id/action_categoriesFragment_to_locationFragment"
+            app:destination="@id/locationFragment" />
+        <action
+            android:id="@+id/action_categoriesFragment_to_episodeFragment"
+            app:destination="@id/episodeFragment" />
     </fragment>
+
+    <action
+        android:id="@+id/globalGoToCharacterFragment"
+        app:destination="@id/characterFragment" />
 
     <fragment
         android:id="@+id/characterFragment"
@@ -35,8 +45,60 @@
         android:label="fragment_character"
         tools:layout="@layout/fragment_character">
         <argument
+            android:name="characterLink"
+            android:defaultValue=""
+            app:argType="string"
+            app:nullable="true" />
+        <argument
             android:name="data"
-            app:argType="com.molluk.data.character.models.CharacterResult" />
+            app:argType="com.molluk.data.character.models.CharacterResult"
+            app:nullable="true" />
+    </fragment>
+
+    <action
+        android:id="@+id/globalGoToLocationFragment"
+        app:destination="@id/locationFragment" />
+
+    <fragment
+        android:id="@+id/locationFragment"
+        android:name="com.molluk.ui.home.categories.location.LocationFragment"
+        android:label="fragment_location"
+        tools:layout="@layout/fragment_location">
+
+        <argument
+            android:name="locationLink"
+            android:defaultValue=""
+            app:argType="string"
+            app:nullable="true" />
+
+        <argument
+            android:name="data"
+            app:argType="com.molluk.data.location.models.LocationResult"
+            app:nullable="true" />
+
+    </fragment>
+
+    <action
+        android:id="@+id/globalGoToEpisodeFragment"
+        app:destination="@id/episodeFragment" />
+
+    <fragment
+        android:id="@+id/episodeFragment"
+        android:name="com.molluk.ui.home.categories.episode.EpisodeFragment"
+        android:label="fragment_episode"
+        tools:layout="@layout/fragment_episode">
+
+        <argument
+            android:name="episodeLink"
+            android:defaultValue=""
+            app:argType="string"
+            app:nullable="true" />
+
+        <argument
+            android:name="data"
+            app:argType="com.molluk.data.episode.models.EpisodeResult"
+            app:nullable="true" />
+
     </fragment>
 
     <fragment

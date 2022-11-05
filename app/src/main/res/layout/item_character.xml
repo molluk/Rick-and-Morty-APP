@@ -9,11 +9,12 @@
 
         <variable
             name="data"
-            type="com.molluk.ui.home.categories.view_holders.DefaultItem" />
+            type="com.molluk.data.character.models.CharacterResult" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:id="@+id/parent"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?selectableItemBackground"
@@ -36,8 +37,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
-            android:layout_marginTop="20dp"
+            android:layout_gravity="start|center_vertical"
             android:orientation="vertical"
+            android:layout_weight="1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/image"
             app:layout_constraintTop_toTopOf="parent">
@@ -49,8 +51,8 @@
                 android:layout_height="wrap_content"
                 android:drawablePadding="4dp"
                 android:maxLines="1"
-                android:text='@{data.itemName}'
-                android:visibility="@{data.itemName == null || data.itemName.empty ? View.GONE : View.VISIBLE}"
+                android:text='@{data.name}'
+                android:visibility="@{data.name == null || data.name.empty ? View.GONE : View.VISIBLE}"
                 tools:text="Toxic Rick" />
 
             <com.google.android.material.textview.MaterialTextView
@@ -58,9 +60,9 @@
                 style="@style/BodySmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text='@{data.itemStatus}'
+                android:text='@{data.status}'
                 android:textColor="@color/color_red"
-                android:visibility="@{data.itemStatus == null || data.itemStatus.empty ? View.GONE : View.VISIBLE}"
+                android:visibility="@{data.status == null || data.status.empty ? View.GONE : View.VISIBLE}"
                 tools:text="Dead" />
 
             <com.google.android.material.textview.MaterialTextView
@@ -68,12 +70,12 @@
                 style="@style/BodySmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text='@{data.itemType}'
+                android:text='@{data.type}'
                 android:textColor="@color/color_gray"
-                android:visibility="@{data.itemType == null || data.itemType.empty ? View.GONE : View.VISIBLE}"
+                android:visibility="@{data.type == null || data.type.empty ? View.GONE : View.VISIBLE}"
                 tools:text="Rick's Toxic Side" />
         </LinearLayout>
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 </layout>

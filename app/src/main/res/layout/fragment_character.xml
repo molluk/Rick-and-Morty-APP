@@ -56,8 +56,8 @@
             <View
                 android:id="@+id/separatorTop"
                 style="@style/Separator"
-                android:visibility="gone"
                 android:elevation="1dp"
+                android:visibility="gone"
                 app:layout_constraintTop_toBottomOf="@id/bgTop"
                 tools:visibility="visible" />
 
@@ -138,12 +138,6 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <com.google.android.material.textview.MaterialTextView
-                        style="@style/TitleMedium"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/character_info" />
-
                     <com.google.android.material.card.MaterialCardView
                         style="@style/CustomCardView"
                         android:layout_width="match_parent"
@@ -156,6 +150,15 @@
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
                             android:paddingVertical="6dp">
+
+                            <com.google.android.material.textview.MaterialTextView
+                                style="@style/TitleMedium"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingVertical="6dp"
+                                android:paddingStart="12dp"
+                                android:paddingEnd="0dp"
+                                android:text="@string/character_info" />
 
                             <com.google.android.material.textview.MaterialTextView
                                 android:id="@+id/characterId"
@@ -265,47 +268,63 @@
                                 android:layout_marginHorizontal="16dp"
                                 android:visibility="@{data.gender == null || data.gender.empty ? View.GONE : View.VISIBLE}" />
 
-                            <com.google.android.material.textview.MaterialTextView
-                                android:id="@+id/characterOrigin"
-                                style="@style/BodyMedium"
+                            <com.facebook.shimmer.ShimmerFrameLayout
+                                android:id="@+id/shimmerOrigin"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:background="?selectableItemBackground"
-                                android:drawableEnd="@drawable/arrow_forward_ios_16"
-                                android:drawableTint="@color/color_gray"
-                                android:paddingVertical="8dp"
-                                android:paddingStart="12dp"
-                                android:paddingEnd="8dp"
-                                android:text='@{@string/character_origin(data.origin.name)}'
-                                android:textColor="@color/text"
-                                android:visibility="@{data.origin.name == null || data.origin.name.empty ? View.GONE : View.VISIBLE}"
-                                tools:text="@string/character_origin" />
+                                android:visibility="@{data.origin.url == null || data.origin.url.empty ? View.GONE : View.VISIBLE}"
+                                app:shimmer_auto_start="true">
+
+                                <com.google.android.material.textview.MaterialTextView
+                                    android:id="@+id/characterOrigin"
+                                    style="@style/BodyMedium"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="?selectableItemBackground"
+                                    android:drawableEnd="@drawable/arrow_forward_ios_16"
+                                    android:drawableTint="@color/color_gray"
+                                    android:paddingVertical="8dp"
+                                    android:paddingStart="12dp"
+                                    android:paddingEnd="8dp"
+                                    android:text='@{@string/character_origin(data.origin.name)}'
+                                    android:textColor="@color/text"
+                                    android:visibility="@{data.origin.url == null || data.origin.url.empty ? View.GONE : View.VISIBLE}"
+                                    tools:text="@string/character_origin" />
+                            </com.facebook.shimmer.ShimmerFrameLayout>
 
                             <View
                                 style="@style/Separator"
                                 android:layout_marginHorizontal="16dp"
-                                android:visibility="@{data.origin.name == null || data.origin.name.empty ? View.GONE : View.VISIBLE}" />
+                                android:visibility="@{data.origin.url == null || data.origin.url.empty ? View.GONE : View.VISIBLE}" />
 
-                            <com.google.android.material.textview.MaterialTextView
-                                android:id="@+id/characterLocation"
-                                style="@style/BodyMedium"
+                            <com.facebook.shimmer.ShimmerFrameLayout
+                                android:id="@+id/shimmerLocation"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:background="?selectableItemBackground"
-                                android:drawableEnd="@drawable/arrow_forward_ios_16"
-                                android:drawableTint="@color/color_gray"
-                                android:paddingVertical="8dp"
-                                android:paddingStart="12dp"
-                                android:paddingEnd="8dp"
-                                android:text='@{@string/character_location(data.location.name)}'
-                                android:textColor="@color/text"
-                                android:visibility="@{data.location.name == null || data.location.name.empty ? View.GONE : View.VISIBLE}"
-                                tools:text="@string/character_location" />
+                                android:visibility="@{data.location.url == null || data.location.url.empty ? View.GONE : View.VISIBLE}"
+                                app:shimmer_auto_start="true">
+
+                                <com.google.android.material.textview.MaterialTextView
+                                    android:id="@+id/characterLocation"
+                                    style="@style/BodyMedium"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="?selectableItemBackground"
+                                    android:drawableEnd="@drawable/arrow_forward_ios_16"
+                                    android:drawableTint="@color/color_gray"
+                                    android:paddingVertical="8dp"
+                                    android:paddingStart="12dp"
+                                    android:paddingEnd="8dp"
+                                    android:text='@{@string/character_location(data.location.name)}'
+                                    android:textColor="@color/text"
+                                    android:visibility="@{data.location.url == null || data.location.url.empty ? View.GONE : View.VISIBLE}"
+                                    tools:text="@string/character_location" />
+                            </com.facebook.shimmer.ShimmerFrameLayout>
 
                             <View
                                 style="@style/Separator"
                                 android:layout_marginHorizontal="16dp"
-                                android:visibility="@{data.location.name == null || data.location.name.empty ? View.GONE : View.VISIBLE}" />
+                                android:visibility="@{data.location.url == null || data.location.url.empty ? View.GONE : View.VISIBLE}" />
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -391,48 +410,65 @@
 
                     </com.google.android.material.card.MaterialCardView>
 
-                    <androidx.appcompat.widget.LinearLayoutCompat
-                        android:id="@+id/episodeTitle"
+                    <com.google.android.material.card.MaterialCardView
+                        style="@style/CustomCardView"
+                        listStringVisibility="@{data.episode}"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal"
-                        android:visibility="@{data.episode == null ? View.GONE : View.VISIBLE }">
-
-                        <com.google.android.material.textview.MaterialTextView
-                            style="@style/TitleMedium"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="4dp"
-                            android:text="@string/character_episode" />
-
-                        <ImageView
-                            android:id="@+id/showMoreEpisode"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/expand_more" />
-                    </androidx.appcompat.widget.LinearLayoutCompat>
-
-                    <com.google.android.material.card.MaterialCardView
-                        android:id="@+id/moreEpisode"
-                        style="@style/CustomCardView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
                         android:elevation="0dp"
-                        android:visibility="gone"
                         tools:visibility="visible">
 
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/recyclerLinks"
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:nestedScrollingEnabled="false"
-                            android:orientation="vertical"
-                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                            tools:itemCount="2"
-                            tools:listitem="@layout/item_episode" />
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <com.facebook.shimmer.ShimmerFrameLayout
+                                android:id="@+id/shimmer"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:visibility="visible"
+                                app:shimmer_auto_start="true">
+
+                                <androidx.appcompat.widget.LinearLayoutCompat
+                                    android:id="@+id/episodeTitle"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="?selectableItemBackground"
+                                    android:gravity="center_vertical"
+                                    android:orientation="horizontal"
+                                    android:paddingVertical="6dp"
+                                    android:paddingStart="12dp"
+                                    android:paddingEnd="8dp">
+
+                                    <com.google.android.material.textview.MaterialTextView
+                                        style="@style/TitleMedium"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginEnd="4dp"
+                                        android:layout_weight="1"
+                                        android:text="@string/character_episode" />
+
+                                    <ImageView
+                                        android:id="@+id/showMoreEpisode"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:src="@drawable/expand_more" />
+                                </androidx.appcompat.widget.LinearLayoutCompat>
+                            </com.facebook.shimmer.ShimmerFrameLayout>
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/recyclerLinks"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:nestedScrollingEnabled="false"
+                                android:orientation="vertical"
+                                android:visibility="gone"
+                                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                tools:itemCount="2"
+                                tools:listitem="@layout/item_in_list" />
+                        </LinearLayout>
                     </com.google.android.material.card.MaterialCardView>
                 </LinearLayout>
 

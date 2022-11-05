@@ -2,12 +2,14 @@ package com.molluk.di
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.os.Build
 import com.molluk.data.character.network.CharacterNetwork
 import com.molluk.data.character.network.CharacterService
+import com.molluk.data.episode.network.EpisodeNetwork
+import com.molluk.data.episode.network.EpisodeService
+import com.molluk.data.location.network.LocationNetwork
+import com.molluk.data.location.network.LocationService
 import com.resource.SharedKeys
 import com.squareup.moshi.Moshi
-import com.squareup.moshi.adapters.PolymorphicJsonAdapterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -18,7 +20,6 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-import retrofit2.create
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
@@ -95,4 +96,20 @@ object NetworkModule {
     @Singleton
     @Provides
     fun provideCharacterNetwork(characterService: CharacterService) = CharacterNetwork(characterService)
+
+    @Provides
+    fun provideLocationService(retrofit: Retrofit): LocationService =
+        retrofit.create(LocationService::class.java)
+
+    @Singleton
+    @Provides
+    fun provideLocationNetwork(locationService: LocationService) = LocationNetwork(locationService)
+
+    @Provides
+    fun provideEpisodeService(retrofit: Retrofit): EpisodeService =
+        retrofit.create(EpisodeService::class.java)
+
+    @Singleton
+    @Provides
+    fun provideEpisodeNetwork(episodeService: EpisodeService) = EpisodeNetwork(episodeService)
 }

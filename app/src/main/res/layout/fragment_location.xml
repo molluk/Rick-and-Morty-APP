@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="data"
+            type="com.molluk.data.location.models.LocationResult" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        tools:context=".ui.home.categories.location.locationFragment">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbar"
+            style="@style/Appbar"
+            android:fitsSystemWindows="true">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
+                style="@style/Toolbar.Back"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        style="@style/TitleLarge"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:gravity="start|center_vertical"
+                        android:lines="1"
+                        android:text='@{data.name}'
+                        tools:text="Citadel of Ricks" />
+
+                    <ImageButton
+                        android:id="@+id/share"
+                        style="@style/Button.Numpad"
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:layout_gravity="end|center"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:src="@drawable/share"
+                        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle.Button"
+                        app:tint="@color/text" />
+                </LinearLayout>
+            </com.google.android.material.appbar.MaterialToolbar>
+
+            <View
+                android:id="@+id/separatorTop"
+                style="@style/Separator"
+                android:visibility="gone"
+                tools:visibility="visible" />
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nestedScroll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:overScrollMode="never"
+            android:paddingHorizontal="16dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="64dp"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/CustomCardView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:elevation="0dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingVertical="6dp">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            style="@style/TitleMedium"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingVertical="6dp"
+                            android:paddingStart="12dp"
+                            android:paddingEnd="0dp"
+                            android:text="@string/location_info" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/locationId"
+                            style="@style/BodyMedium"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingVertical="8dp"
+                            android:paddingStart="12dp"
+                            android:paddingEnd="8dp"
+                            android:text='@{@string/location_id(data.id)}'
+                            android:textColor="@color/text"
+                            android:visibility="@{data.id == 0 || data.id == -1 ? View.GONE : View.VISIBLE}"
+                            tools:text="@string/location_id" />
+
+                        <View
+                            style="@style/Separator"
+                            android:layout_marginHorizontal="16dp"
+                            android:visibility="@{data.id == 0 || data.id == -1 ? View.GONE : View.VISIBLE}" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/locationName"
+                            style="@style/BodyMedium"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingVertical="8dp"
+                            android:paddingStart="12dp"
+                            android:paddingEnd="8dp"
+                            android:text='@{@string/location_name(data.name)}'
+                            android:textColor="@color/text"
+                            android:visibility="@{data.name == null || data.name.empty ? View.GONE : View.VISIBLE}"
+                            tools:text="@string/location_name" />
+
+                        <View
+                            style="@style/Separator"
+                            android:layout_marginHorizontal="16dp"
+                            android:visibility="@{data.name == null || data.name.empty ? View.GONE : View.VISIBLE}" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/locationType"
+                            style="@style/BodyMedium"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingVertical="8dp"
+                            android:paddingStart="12dp"
+                            android:paddingEnd="8dp"
+                            android:text='@{@string/location_type(data.type)}'
+                            android:textColor="@color/text"
+                            android:visibility="@{data.type == null || data.type.empty ? View.GONE : View.VISIBLE}"
+                            tools:text="@string/location_type" />
+
+                        <View
+                            style="@style/Separator"
+                            android:layout_marginHorizontal="16dp"
+                            android:visibility="@{data.type == null || data.type.empty ? View.GONE : View.VISIBLE}" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/locationDimension"
+                            style="@style/BodyMedium"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingVertical="8dp"
+                            android:paddingStart="12dp"
+                            android:paddingEnd="8dp"
+                            android:text='@{@string/location_dimension(data.type)}'
+                            android:textColor="@color/text"
+                            android:visibility="@{data.dimension == null || data.dimension.empty ? View.GONE : View.VISIBLE}"
+                            tools:text="@string/location_dimension" />
+
+                        <View
+                            style="@style/Separator"
+                            android:layout_marginHorizontal="16dp"
+                            android:visibility="@{data.dimension == null || data.dimension.empty ? View.GONE : View.VISIBLE}" />
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingVertical="8dp"
+                            android:paddingStart="12dp"
+                            android:paddingEnd="8dp"
+                            android:visibility="@{data.url == null || data.url.empty ? View.GONE : View.VISIBLE}">
+
+                            <com.google.android.material.textview.MaterialTextView
+                                style="@style/BodyMedium"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text='@string/location_url' />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/locationUrl"
+                                style="@style/BodyMedium"
+                                link="@{data.url}"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:layout_weight="1"
+                                android:ellipsize="middle"
+                                android:maxLines="1"
+                                tools:text="https://rickandmortyapi.com/api/location/2" />
+                        </LinearLayout>
+
+                        <View
+                            style="@style/Separator"
+                            android:layout_marginHorizontal="16dp"
+                            android:visibility="@{data.url == null || data.url.empty ? View.GONE : View.VISIBLE}" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/locationCreated"
+                            style="@style/BodyMedium"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingVertical="8dp"
+                            android:paddingStart="12dp"
+                            android:paddingEnd="8dp"
+                            android:text='@{@string/location_created(data.created)}'
+                            android:textColor="@color/text"
+                            android:visibility="@{data.created == null || data.created.empty ? View.GONE : View.VISIBLE}"
+                            tools:text="@string/location_created" />
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/residentsCard"
+                    style="@style/CustomCardView"
+                    listStringVisibility="@{data.residents}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:elevation="0dp"
+                    tools:visibility="visible">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <com.facebook.shimmer.ShimmerFrameLayout
+                            android:id="@+id/shimmer"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:visibility="visible"
+                            app:shimmer_auto_start="true">
+
+                            <androidx.appcompat.widget.LinearLayoutCompat
+                                android:id="@+id/charactersTitle"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="?selectableItemBackground"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:paddingVertical="6dp"
+                                android:paddingStart="12dp"
+                                android:paddingEnd="8dp">
+
+                                <com.google.android.material.textview.MaterialTextView
+                                    style="@style/TitleMedium"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="4dp"
+                                    android:layout_weight="1"
+                                    android:text="@string/location_episode" />
+
+                                <ImageView
+                                    android:id="@+id/showMoreCharacters"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/expand_more" />
+                            </androidx.appcompat.widget.LinearLayoutCompat>
+                        </com.facebook.shimmer.ShimmerFrameLayout>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerLinks"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:nestedScrollingEnabled="false"
+                            android:orientation="vertical"
+                            android:visibility="gone"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                            tools:itemCount="2"
+                            tools:listitem="@layout/item_in_list" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>
